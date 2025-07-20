@@ -14,7 +14,7 @@ public:
             int node = pq.top().second;
             long long path_cost = pq.top().first;
             pq.pop();
-            if (path_cost > cost[node]) continue;
+           // if (path_cost > cost[node]) continue;
             if(node==n-1) return true;
 
             for(auto it : adj[node]){
