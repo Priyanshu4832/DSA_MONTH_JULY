@@ -9,7 +9,7 @@ public:
         int l = 0;
         int r = 0;
 
-        set<int> st;
+        unordered_set<int> st;
         while(r<nums.size()){
 
             if(st.find(nums[r])==st.end()){
