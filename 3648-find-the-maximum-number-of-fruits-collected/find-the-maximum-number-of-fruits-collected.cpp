@@ -68,9 +68,14 @@ public:
         collect+=func1(0,n-1,fruits,dp);
 
 
-        vector<vector<long long>> dpp(n,vector<long long>(n,-1));
+        for(int i=0 ; i<n ; i++){
+            for(int j=0 ; j<n ; j++){
+                dp[i][j]=-1;
+            }
+        }
         
-        collect+=func2(n-1,0,fruits,dpp);
+        
+        collect+=func2(n-1,0,fruits,dp);
 
 
 
