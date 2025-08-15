@@ -17,24 +17,27 @@ public:
         if(temp.size()==0) return "";
 
 
-        int low = 0;
-        int high = temp.size();  // use size, not size-1
+         // use size, not size-1
 
         if (timestamp < temp[0].second) return "";
         if (timestamp > temp.back().second) return temp.back().first;
 
         string ans;
-        while (low < high) {
+        int low = 0;
+        int high = temp.size()-1; 
+        while (low <= high) {
 
             int mid = low + (high - low) / 2;
 
             if (temp[mid].second <= timestamp){
-                low = mid + 1;
+                
+                
                 ans = temp[mid].first;
+                low = mid+1;
             }
                 
             else{
-                high = mid;
+                high = mid-1;
             }
                 
         }
