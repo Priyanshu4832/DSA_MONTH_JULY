@@ -23,18 +23,24 @@ public:
         if (timestamp < temp[0].second) return "";
         if (timestamp > temp.back().second) return temp.back().first;
 
+        string ans;
         while (low < high) {
 
             int mid = low + (high - low) / 2;
-            
-            if (temp[mid].second <= timestamp)
+
+            if (temp[mid].second <= timestamp){
                 low = mid + 1;
-            else
+                ans = temp[mid].first;
+            }
+                
+            else{
                 high = mid;
+            }
+                
         }
 
     
-        return temp[low-1].first;
+        return ans;
     }
 };
 
