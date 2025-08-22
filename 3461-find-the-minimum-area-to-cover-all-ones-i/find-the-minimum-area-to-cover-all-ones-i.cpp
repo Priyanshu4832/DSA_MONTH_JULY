@@ -12,17 +12,7 @@ public:
         int right =-1;
 
 
-        for(int i = 0 ; i<n ; i++){
-
-            for(int j = 0 ; j<m ; j++){
-
-                if(grid[j][i]==1){
-                    left = min (left , i);
-                    right = max(right , i);
-
-                }
-            }
-        }
+        
         for(int i = 0 ; i<m ; i++){
 
             for(int j = 0 ; j<n ; j++){
@@ -30,6 +20,8 @@ public:
                 if(grid[i][j]==1){
                     top = min (top , i);
                     bottom = max(bottom , i);
+                    left = min (left , j);
+                    right = max(right , j);
 
                 }
             }
