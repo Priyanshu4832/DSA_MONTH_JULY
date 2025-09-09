@@ -1,14 +1,14 @@
 class Solution {
 public:
 
-    void printA(vector<vector<long long>> &simulation){
-        for(int i = 0 ; i<simulation.size() ; i++){
-            for(int j = 0 ; j<simulation[0].size() ; j++){
-                cout<<simulation[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-    }
+    // void printA(vector<vector<long long>> &simulation){
+    //     for(int i = 0 ; i<simulation.size() ; i++){
+    //         for(int j = 0 ; j<simulation[0].size() ; j++){
+    //             cout<<simulation[i][j]<<" ";
+    //         }
+    //         cout<<endl;
+    //     }
+    // }
     int peopleAwareOfSecret(int n, int delay, int forget) {
         
         int mod = 1000000007;
