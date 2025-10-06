@@ -5,7 +5,7 @@ public:
         int n = grid.size();
         vector<vector<int>> vis(n,vector<int>(n,0));
       
-        //queue<pair<pair<int,int>,int>> q;
+       
 
         
         priority_queue< pair<int,pair<int,int>>  , vector<pair<int,pair<int,int>>> , greater<pair<int,pair<int,int>>> >pq;
@@ -39,7 +39,7 @@ public:
 
                     pq.push({maxHeight,{nr,nc}});
                     vis[nr][nc]=1;
-                    cout<<nr<<" "<<nc<<" "<<maxHeight<<endl;
+                    
                     
 
                 }
