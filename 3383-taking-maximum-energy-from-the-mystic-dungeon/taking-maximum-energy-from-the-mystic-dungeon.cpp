@@ -14,7 +14,7 @@ public:
         }
 
         int maxi=-1e9;
-        for(auto it : hash) maxi=max(maxi,it);
+        for(int i=0 ; i<n ; i++) maxi=max(maxi,hash[i]);
         return maxi;
     }
 };
