@@ -6,18 +6,18 @@ public:
         for(auto it : wordlist) st.insert(it);
 
         //lower then match 
-        map<string,vector<string>>mpp;
+        map<string,string>mpp;
         for(auto word : wordlist){
             string str;
             for(int i = 0 ; i<word.size() ; i++){
                 str+=tolower(word[i]);
             }
-            mpp[str].push_back(word);
+            if(mpp.find(str)==mpp.end()) mpp[str]=word;
         }
 
         //vowel match
 
-        map<string,vector<string>> vow;
+        map<string,string> vow;
         for(auto word : wordlist){
             string str;
             for(int i = 0 ; i<word.size() ; i++){
@@ -28,7 +28,7 @@ public:
                 }
                 else str+=ch;
             }
-            vow[str].push_back(word);
+            if(vow.find(str)==vow.end()) vow[str]=word;
         }
 
 
@@ -51,11 +51,11 @@ public:
             if(st.find(word)!=st.end()) res.push_back(word);
 
             else if(mpp.find(str1)!=mpp.end()){
-                res.push_back(mpp[str1][0]);
+                res.push_back(mpp[str1]);
 
             }
             else if(vow.find(str2)!=vow.end()){
-                res.push_back(vow[str2][0]);
+                res.push_back(vow[str2]);
             }
             else res.push_back("");
 
