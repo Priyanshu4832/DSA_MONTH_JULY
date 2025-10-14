@@ -6,31 +6,28 @@ public:
         for(auto it : wordlist) st.insert(it);
 
         //lower then match 
-        map<string,string>mpp;
+        unordered_map<string,string>mpp;
+        unordered_map<string,string> vow;
         for(auto word : wordlist){
-            string str;
+            string str1;
+            string str2;
             for(int i = 0 ; i<word.size() ; i++){
-                str+=tolower(word[i]);
+                str1+=tolower(word[i]);
+                char ch = tolower(word[i]);
+                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'){
+                    str2+='*';
+                }
+                else str2+=ch;
+
             }
-            if(mpp.find(str)==mpp.end()) mpp[str]=word;
+            if(mpp.find(str1)==mpp.end()) mpp[str1]=word;
+            if(vow.find(str2)==vow.end()) vow[str2]=word;
         }
 
         //vowel match
 
-        map<string,string> vow;
-        for(auto word : wordlist){
-            string str;
-            for(int i = 0 ; i<word.size() ; i++){
-
-                char ch = tolower(word[i]);
-                if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'){
-                    str+='*';
-                }
-                else str+=ch;
-            }
-            if(vow.find(str)==vow.end()) vow[str]=word;
-        }
-
+        
+        
 
         vector<string> res;
         for(auto word : queries){
