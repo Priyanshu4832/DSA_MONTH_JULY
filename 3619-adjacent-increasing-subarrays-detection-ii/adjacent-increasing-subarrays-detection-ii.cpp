@@ -26,7 +26,7 @@ public:
 
             maxLen=max(maxLen , cnt1/2);
             maxLen=max(min(glob,cnt1) ,maxLen );
-            cout<<maxLen<<endl;
+            
 
            
             while( k+1<n && nums[k]<nums[k+1]){
