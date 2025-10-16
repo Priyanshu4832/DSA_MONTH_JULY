@@ -3,11 +3,13 @@ public:
     int findSmallestInteger(vector<int>& nums, int value) {
         
         int n = nums.size();
+        vector<int> hash(value,0);
     
-        map<int, int> mpp;
+       
         for(int i=0 ; i<n ; i++){
             int m = ((nums[i] % value) + value) % value;
-            mpp[m]++;
+            
+            hash[m]++;
         }
 
 
@@ -16,9 +18,9 @@ public:
             int k = i;
             int m = k%value;
             
-            if(mpp.find(m)!=mpp.end()){
-                mpp[m]--;
-                if(mpp[m]==0) mpp.erase(m);
+            if(hash[m]!=0){
+                hash[m]--;
+               
                 i++;
 
                 
