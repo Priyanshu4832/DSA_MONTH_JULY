@@ -1,58 +1,45 @@
 class Solution {
 public:
+    int func(int i, int j, vector<vector<char>>& matrix, vector<vector<int>>& dp) {
+    
+        if (i >= matrix.size() || j >= matrix[0].size() || matrix[i][j] == '0') {
+            return 0;
+        }
+        
+
+        if (dp[i][j] != -1)  return dp[i][j];
+        
+        
+       
+        int down = func(i + 1, j, matrix, dp);      
+        int right = func(i, j + 1, matrix, dp);        
+        int diagonal = func(i + 1, j + 1, matrix, dp);
+        
+
+        
+        return dp[i][j] = 1 + min({down, right, diagonal});;
+    }
 
     int maximalSquare(vector<vector<char>>& matrix) {
+        if (matrix.empty() || matrix[0].empty()) return 0;
         
         int m = matrix.size();
         int n = matrix[0].size();
-        int flag=0;
- 
-
-        vector<vector<int>> down(m,vector<int>(n,0));
-
-
-        for(int i=m-1 ; i>=0 ; i--){
-            for(int j=n-1 ; j>=0 ; j--){
-                if(flag==0 && matrix[i][j]=='1') flag=1;
-
-                if(i==m-1){
-                    if(matrix[i][j]=='1') down[i][j]=1;
-                    else down[i][j]=0;
-                }
-                else{
-                    if(matrix[i][j]=='1') down[i][j]=1+down[i+1][j];
-                    else down[i][j]=0;
-                }
-                
-                
-
-                
-             
-            }
-        }
-
-        int maxSquare=0;
-        for(int i=0 ; i<m ; i++){
-            for(int j=0 ; j<n ; j++){
-                
-                if(down[i][j]==0) continue;
-
-                int startIdx = j;
-                int downLen=down[i][j];
-
-                for(int k = j+1 ; k<n ; k++){
-                    if(matrix[i][k]=='1'){
-                        downLen=min(downLen,down[i][k]);
-                        if(downLen==k-j+1) maxSquare=max(downLen*downLen,maxSquare);
-                    }
-                    else break;
-                }
-            }
-        }
-
-
-        if(maxSquare==0 && flag==1) return 1;
-        else return maxSquare;
+        
    
+        vector<vector<int>> dp(m, vector<int>(n, -1));
+        
+        int maxSquare = 0;
+        
+    
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == '1') {
+                    maxSquare = max(maxSquare, func(i, j, matrix, dp));
+                }
+            }
+        }
+        
+        return maxSquare * maxSquare; 
     }
 };
