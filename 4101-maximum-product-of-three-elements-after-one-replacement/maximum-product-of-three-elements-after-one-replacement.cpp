@@ -7,7 +7,7 @@ public:
         long long res;
         for(int i=0 ; i<n ; i++) nums[i]=abs(nums[i]);
         sort(nums.begin() , nums.end());
-        res = abs(1e5*1LL*nums[n-1]*nums[n-2]);
+        res = abs(1e5*nums[n-1]*nums[n-2]);
         return res;
 
 
