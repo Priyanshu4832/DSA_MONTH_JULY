@@ -17,7 +17,7 @@ public:
             }
             if(nums[i]>max2 && nums[i]<max1) max2=nums[i];
         }
-        cout<<max1<<" "<<max2;
+        
         res = abs(1e5*max1*max2);
         return res;
 
