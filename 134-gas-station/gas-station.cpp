@@ -24,14 +24,12 @@ public:
         int cnt=0;
         vector<int> deficet(n);
 
-        queue<int> q;
-
         int maxi=0;
         for(int i=0 ; i<n; i++){
             int cal=gas[i]-cost[i];
             deficet[i]=cal;
             cnt+=cal;
-            maxi=max(maxi,cal);
+
             
         } 
         if(cnt<0) return -1;
