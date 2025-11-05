@@ -22,31 +22,25 @@ public:
 
         int n=gas.size();
         int cnt=0;
-        vector<int> deficet(n);
+        
 
         int maxi=0;
-        for(int i=0 ; i<n; i++){
-            int cal=gas[i]-cost[i];
-            deficet[i]=cal;
-            cnt+=cal;
-
-            
-        } 
-        if(cnt<0) return -1;
-
-
         int stidx=0;
         int fuel=0;
-        for(int i=0 ; i<n ; i++){
-            fuel+=deficet[i];
+        for(int i=0 ; i<n; i++){
+            int cal=gas[i]-cost[i];
+
+            // deficet[i]=cal;
+            cnt+=cal;
+            fuel+=cal;
             if(fuel<0){
                 stidx=i+1;
                 fuel=0;
             }
-        }
 
-
-        
+            
+        } 
+        if(cnt<0) return -1;
 
         
         return stidx;;
