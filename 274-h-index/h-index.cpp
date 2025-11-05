@@ -8,7 +8,7 @@ public:
         for(int i=0 ; i<citations.size() ; i++){
             int cnt = citations[i];
             int paperCnt = citations.size()-i;
-            cout<<"citations "<<cnt<<" papers "<<paperCnt<<endl;
+
             if(cnt>=paperCnt){
                 h=max(h,paperCnt);
             }
