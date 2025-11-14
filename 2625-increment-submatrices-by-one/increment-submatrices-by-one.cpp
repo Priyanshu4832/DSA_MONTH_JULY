@@ -5,12 +5,12 @@ public:
 
         vector<vector<int>> diff(n,vector<int>(n,0));
 
-        for(auto it : queries){
+        for(int it=0 ; it<queries.size() ; it++){
 
-            int row1 = it[0];
-            int row2 = it[2];
-            int col1 = it[1];
-            int col2 = it[3];
+            int row1 = queries[it][0];
+            int row2 = queries[it][2];
+            int col1 = queries[it][1];
+            int col2 = queries[it][3];
 
             
 
