@@ -9,7 +9,7 @@ public:
         int accOnes=0;
 
         int i=0;
-        int globc=0;
+       
         while(i<n){
 
             if(s[i]=='1'){
@@ -20,8 +20,7 @@ public:
                 }
                 cnt+=accOnes;
                 accOnes+=c;
-                globc = c;
-
+             
                 
 
             }
