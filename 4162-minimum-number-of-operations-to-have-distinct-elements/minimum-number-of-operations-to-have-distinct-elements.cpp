@@ -4,9 +4,9 @@ public:
         int n = nums.size();
         unordered_map<int,int> freq;
         vector<int> dup;
-        for ( int i : nums) {
-            freq[i]++;
-            if ( freq[i] >= 2) dup.push_back(i);
+        for (int i=0 ; i<nums.size() ; i++) {
+            freq[nums[i]]++;
+            if ( freq[nums[i]] >= 2) dup.push_back(nums[i]);
         }
 
         
