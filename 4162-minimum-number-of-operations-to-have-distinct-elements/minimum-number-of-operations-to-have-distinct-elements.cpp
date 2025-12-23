@@ -16,20 +16,21 @@ public:
         //cout << *nums.begin()<<" " ;
        
        int i=0;
-        while (dup.size() > 0 && nums.size() >= 3) {
+       int q=0;
+        while (q <dup.size() && nums.size() >= 3) {
             freq[nums[i]]--;
             freq[nums[i+1]]--;
             freq[nums[i+2]]--;
             
-            while (dup.size() > 0 && freq[dup[0]] <= 1 ) {
-                dup.erase(dup.begin());
+            while (q <dup.size()  && freq[dup[q]] <= 1 ) {
+                q++;
                 //cout << 5 << endl;
             }
             i+=3;
             k++;
         }
         //for ( int i : nums) cout << i << endl;
-        if (dup.size() == 0) return k;
+        if (dup.size() == q) return k;
         // cout << dup[0] << " " <<freq[dup[0]]<< endl;
         return k+1;
 
