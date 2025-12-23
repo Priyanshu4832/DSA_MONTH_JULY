@@ -50,7 +50,7 @@ public:
         sort(events.begin() , events.end());
         int n = events.size();
 
-        vector<vector<int>> dp(n+1,vector<int>(3,-1));
+        vector<vector<int>> dp(n,vector<int>(3,-1));
         return func(0,events , 2 , dp);
 
     }
