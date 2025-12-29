@@ -14,7 +14,7 @@ public:
             return func(0, 0, up,s,lookup);
         }
 
-        if(idx1 >= down.size() - 1) return false;
+        //if(idx1 >= down.size() - 1) return false;
         // try out all possible ways
         int c1 = down[idx1] - 'A';
         int c2 = down[idx1+1] - 'A';
