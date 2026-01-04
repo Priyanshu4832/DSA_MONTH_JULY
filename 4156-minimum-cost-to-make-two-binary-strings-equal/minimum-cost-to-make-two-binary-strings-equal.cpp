@@ -34,8 +34,8 @@ public:
             c3 += ((crossCost+swapCost)*(left/2))  + flipCost;
         }
 
-        cout<<cost<<endl;
-        cout<<c1<<" "<<c2<<" "<<c3<<endl;
+        //cout<<cost<<endl;
+        //cout<<c1<<" "<<c2<<" "<<c3<<endl;
         cost += min(c1,min(c2,c3));
         return cost;
 
