@@ -1,62 +1,70 @@
-class DisjointSet{
-public:
-vector<int> parent,rank;
-int components;
+
+class DisjointSet {
+    public:
+    vector<int> parent;
+    vector<int> rank;
 
     DisjointSet(int n){
-        parent.resize(n+1);
-        rank.resize(n+1,0);
-        components=n+1;
-        for(int i=0 ; i<=n ; i++) parent[i]=i;
+        parent.resize(n);
+        rank.resize(n,0);
+        for(int i=0 ; i<n ; i++) parent[i]=i;
     }
-    
 
     int findPar(int node){
-        if(node==parent[node]) return node;
-        else return parent[node]=findPar(parent[node]);
+        if(parent[node]==node){
+            return node;
+        }
+        return parent[node]=findPar(parent[node]);
     }
+
     void UnionByRank(int u , int v){
 
-        int ulp_u = findPar(u);
-        int ulp_v = findPar(v);
-        
-        if(ulp_u==ulp_v) return;
-
-        components--;
-        cout<<" node u "<<u<<" node v "<<v<<"components "<<components<<endl;
-
-        if( rank[ulp_u] > rank[ulp_v]){
-            parent[ulp_v]=ulp_u;
+        int ult_u = findPar(u);
+        int ult_v = findPar(v);
+        if(ult_u==ult_v) return;
+        if(rank[ult_u]>rank[ult_v]){
+            parent[ult_v]=ult_u;
         }
-        else if( rank[ulp_u] < rank[ulp_v]){
-            parent[ulp_u]=ulp_v;
+        else if(rank[ult_u]<rank[ult_v]){
+            parent[ult_u]=ult_v;
         }
         else{
-            parent[ulp_v]=ulp_u;
-            rank[ulp_u]++;
+            parent[ult_v]=ult_u;
+            rank[ult_u]+=1;
         }
-    }
-    int compo(){
-        return components;
     }
 };
 class Solution {
 public:
     int makeConnected(int n, vector<vector<int>>& connections) {
+        int cables = connections.size();
+        if(cables<n-1) return -1;
         
-        if(connections.size()<n-1) return -1;
-        n=n-1;
-
+        
         DisjointSet ds(n);
-        int cnt=0;
-        for(auto it : connections){
-            if(ds.findPar(it[0])!=ds.findPar(it[1])){
-                ds.UnionByRank(it[0],it[1]);
-            }
-            
-        }
-        int comp = ds.compo();
-        return comp-1;
 
+        int extra=0;
+        int ultimate_parent = -1;
+        set<int> parents;
+        for(auto it : connections){
+            if(ds.findPar(it[0])==ds.findPar(it[1])) extra++;
+            else{
+                ds.UnionByRank(it[0],it[1]);
+                parents.insert(ds.findPar(it[0]));
+            }
+        }
+        
+        //for(auto it : parents) cout<<it<<" ";
+        //cout<<endl;
+        int compo = parents.size();
+        //cout<<"compo"<<compo<<endl;
+        int leaf=0;
+        for(int i=0 ; i<n ; i++){
+            if(ds.findPar(i)==i) leaf++;
+            //cout<<ds.findPar(i)<<" "<<i<<endl;
+        }
+        //cout<<"leaf "<<leaf<<endl;
+        return leaf-compo+compo-1;
+       
     }
 };
