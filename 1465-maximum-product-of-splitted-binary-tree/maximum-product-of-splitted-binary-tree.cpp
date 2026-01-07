@@ -40,6 +40,11 @@ public:
         return (val+val2+node->val);
     }
 
+    long long  totalSum(TreeNode* root, long long &total) {
+        if(root == NULL)    return 0 ;
+        total += root->val;
+        return totalSum(root->left,total)+totalSum(root->right,total);
+    }
 
     int maxProduct(TreeNode* root) {
         
@@ -48,19 +53,20 @@ public:
 
         q.push(root);
         long long sum = 0;
+        totalSum(root , sum);
 
-        while(!q.empty()){
+        // while(!q.empty()){
 
-            TreeNode* node = q.front();
-            q.pop();
+        //     TreeNode* node = q.front();
+        //     q.pop();
 
-            sum = (node->val+sum);
+        //     sum = (node->val+sum);
 
-            if(node->left!=NULL) q.push(node->left);
-            if(node->right!=NULL) q.push(node->right);
+        //     if(node->left!=NULL) q.push(node->left);
+        //     if(node->right!=NULL) q.push(node->right);
 
 
-        }
+        // }
 
         long long maxi = 0;
         dfs(root,maxi,sum);
