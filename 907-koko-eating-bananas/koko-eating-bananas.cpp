@@ -7,10 +7,11 @@ public:
         long cnt = 0;
         for(int i = 0 ; i<piles.size() ; i++){
 
+            long temp = piles[i]/k;
             if(piles[i]%k==0){
-                cnt += piles[i]/k;
+                cnt += temp;
             }
-            else cnt+=(piles[i]/k)+1;
+            else cnt+=(temp)+1;
         }
         if(cnt<=h) return true;
         else return false;
