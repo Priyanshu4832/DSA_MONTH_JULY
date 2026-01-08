@@ -22,9 +22,9 @@ public:
             int height = it.first;
 
             pq.pop();
-            res = max(res,height);
+            //res = max(res,height);
             if( r == n-1 && c ==n-1) {
-                return res ;
+                return height ;
             }
             
 
