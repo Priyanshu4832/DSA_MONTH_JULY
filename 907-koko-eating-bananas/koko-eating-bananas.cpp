@@ -4,29 +4,36 @@ public:
 
     bool eat(int k , vector<int> piles , int h){
 
-        int cnt=0;
-        for(int i = 0 ; i<piles.size() ; i++ ){
-            cnt += ceil((double)piles[i] / k);
+        int cnt = 0;
+        for(int i = 0 ; i<piles.size() ; i++){
+
+            if(piles[i]%k==0){
+                cnt += piles[i]/k;
+            }
+            else cnt+=(piles[i]/k)+1;
         }
-        if(cnt>h) return false;
-        return true;
+        if(cnt<=h) return true;
+        else return false;
+        
     }
     int minEatingSpeed(vector<int>& piles, int h) {
         
         
-        sort(piles.begin() , piles.end());
-        int left =1;
-        int right = piles[piles.size()-1];
+        int low=1;
+        int high = INT_MAX;
 
-        while(left<right){
-            int mid  = left + (right-left)/2;
-            if(eat(mid , piles , h)){
-                right=mid;
+        int ans = high;
+        while(low<=high){
+            int mid =low + (high-low)/2;
+
+            if(eat(mid,piles,h)){
+                ans = mid;
+                high = mid-1;
             }
             else{
-                left = mid + 1;
+                low = mid+1;
             }
         }
-        return left;
+        return ans;
     }
 };
