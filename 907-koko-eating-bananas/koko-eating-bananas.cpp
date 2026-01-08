@@ -4,7 +4,7 @@ public:
 
     bool eat(int k , vector<int> piles , int h){
 
-        int cnt = 0;
+        long cnt = 0;
         for(int i = 0 ; i<piles.size() ; i++){
 
             if(piles[i]%k==0){
@@ -20,7 +20,7 @@ public:
         
         
         int low=1;
-        int high = INT_MAX;
+        int high =*max_element(piles.begin(),piles.end());;
 
         int ans = high;
         while(low<=high){
