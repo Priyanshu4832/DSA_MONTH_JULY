@@ -34,18 +34,26 @@ public:
         vector<vector<pair<long long, long long>>> adj1(n);
         vector<vector<pair<long long, long long>>>   adj2(n);
 
-        sort(edges.begin() , edges.end());
+        //sort(edges.begin() , edges.end());
 
+
+        // for(int i=0 ; i<edges.size() ; i++){
+        //     if(i!=0 && edges[i][0]==edges[i-1][0] && edges[i][1]==edges[i-1][1]) continue;
+        //     else{
+        //         long long from = edges[i][0];
+        //         long long to = edges[i][1];
+        //         long long wt = edges[i][2];
+        //         adj1[from].push_back({to,wt});
+        //         adj2[to].push_back({from,wt});
+        //     }
+        // }
 
         for(int i=0 ; i<edges.size() ; i++){
-            if(i!=0 && edges[i][0]==edges[i-1][0] && edges[i][1]==edges[i-1][1]) continue;
-            else{
-                long long from = edges[i][0];
-                long long to = edges[i][1];
-                long long wt = edges[i][2];
-                adj1[from].push_back({to,wt});
-                adj2[to].push_back({from,wt});
-            }
+            long long from = edges[i][0];
+            long long to = edges[i][1];
+            long long wt = edges[i][2];
+            adj1[from].push_back({to,wt});
+            adj2[to].push_back({from,wt});
         }
 
         vector<long long> dis1 = dijsktra(src1, adj1);
