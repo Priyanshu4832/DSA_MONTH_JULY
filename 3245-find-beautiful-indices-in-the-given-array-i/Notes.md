@@ -1,0 +1,1 @@
+<h2>find-beautiful-indices-in-the-given-array-i Notes</h2><hr>[ Time taken: 33 m 54 s ]
