@@ -43,7 +43,7 @@ public:
         
         trav(root);
         //for(auto it : mpp) cout<<it.first<<" ";
-        sort(v.begin(),v.end());
+        //sort(v.begin(),v.end());
         TreeNode* newRoot = func(0,v.size()-1 , v);
         return newRoot;
 
