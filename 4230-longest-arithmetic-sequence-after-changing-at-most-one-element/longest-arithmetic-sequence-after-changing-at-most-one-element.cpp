@@ -45,10 +45,10 @@ public:
                     maxi = max(right[i+1]+2 , maxi);
                 }
                 else if(i+1<n-1 && i-1==0 && (nums[i+2]-nums[i+1]==matchGap)){
-                    maxi = max(left[i-1]+right[i+1]+1 , maxi);
+                    maxi = max(1+right[i+1]+1 , maxi);
                 }
                 else if(i+1==n-1 && i-1>0 && (nums[i-1]-nums[i-2]==matchGap)){
-                    maxi = max(left[i-1]+right[i+1]+1 , maxi);
+                    maxi = max(left[i-1]+1+1 , maxi);
                 }
             }
         }
